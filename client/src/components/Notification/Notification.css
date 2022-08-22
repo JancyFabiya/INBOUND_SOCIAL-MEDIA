@@ -1,0 +1,61 @@
+.Notification{
+    width: 100%;
+    border-radius: 0.7rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.notification{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notification>div{
+    display: flex;
+    gap: 10px;
+}
+.followerImg{
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+}
+.name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.name>span:nth-of-type(1){
+    font-weight: bold;
+}
+.fc-button{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.butdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.button-dec{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  color:var(--orange);
+  border: none;
+  border-radius: 0.5rem;
+  background: white;
+  transition: all 100ms ease-out; 
+}
+.button-dec:hover{
+    cursor: pointer;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+  }

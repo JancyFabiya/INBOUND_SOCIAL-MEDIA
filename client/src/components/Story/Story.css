@@ -1,0 +1,27 @@
+.PostShare{
+    display: flex;
+    gap: 1rem;
+    background-color: (--cardColor);
+    padding: 1rem;
+    border-radius: 1rem;
+
+}
+.PostShare>Card{
+    border-radius: 50%;
+    width:3rem;
+    height: 3rem;
+}
+.plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    width: 100%;
+    height: 150px;
+}
+.plus:hover{
+    cursor: pointer;
+}

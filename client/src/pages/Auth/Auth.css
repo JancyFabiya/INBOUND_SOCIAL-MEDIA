@@ -1,0 +1,111 @@
+.Auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    /* position: relative; */
+    background-image: url('../../img/b6.webp');
+    background-position: center;
+    background-size:cover;
+
+}
+/* .Auth>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+.a-left{
+    gap: 2rem;
+    /* margin-left: -5rem; */
+}
+.a-left>img{
+    width: 25rem;
+    height: 4rem;
+}
+.Webname>h6{
+    font-size: 1rem;
+    margin-left: 5rem;
+    /* color: orange; */
+    background-color: red;
+    
+    /* Create the gradient. */
+    background-image: var(--buttonBg);
+    
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+  
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+/*signup*/
+
+.infoForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    
+}
+.infoInput{
+    border: none;
+    outline: none;
+    /* background-color: var(--inputColor); */
+    border-radius: 8px;
+    padding: 20px;
+    flex:1;
+}
+.infoForm>div{
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    width: 99%;
+}
+.infoButton{
+    width: 6rem;
+    height:2rem;
+    align-self: flex-end;
+}
+.authForm{
+    background-color: var(--cardColor);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.authForm>div{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* .col-lg-6{
+    display: flex;
+    position: relative;
+    margin-left: 52rem;
+    margin-top: -20rem;
+    
+    
+}
+
+.a-left{
+    gap: 2rem;
+    margin-left:-45rem;
+    /* margin-bottom: -68rem;   *
+    margin-top: 28rem;  
+    
+
+      /* display: flex; *
+
+} */

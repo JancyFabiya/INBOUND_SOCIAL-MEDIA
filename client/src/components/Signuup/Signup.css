@@ -1,0 +1,36 @@
+.infoForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.infoInput{
+    border: none;
+    outline: none;
+    background-color: var(--inputColor);
+    border-radius: 8px;
+    padding: 20px;
+    flex:1;
+}
+.infoForm>div{
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    width: 99%;
+}
+.infoButton{
+    width: 6rem;
+    height:2rem;
+    align-self: flex-end;
+}
+.authForm{
+    background-color: var(--cardColor);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.authForm>div{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

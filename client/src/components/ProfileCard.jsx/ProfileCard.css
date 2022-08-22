@@ -1,0 +1,72 @@
+.ProfileCard{
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    margin-right: 2rem;
+    /* overflow-x: clip; */
+    /* background: var(--cardColor); */
+}
+.ProfileImages{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 5%; */
+    border-radius: 6%;
+    /* padding-left: 70%; */
+    padding-right: 18%;
+
+}
+.ProfileImages>img:nth-of-type(1){
+    width: 100%;
+}
+
+.ProfileImages>img:nth-of-type(1){
+    width:5rem;
+    border-radius: 17%;
+    position: absolute;
+    left:-0rem;
+    box-shadow: var(--profileShadow);
+}
+.ProfileName1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4rem;
+    margin-top: 4rem;
+    gap: 10px;
+}
+.ProfileName1>span:nth-of-type(1){
+    font-weight: bold;
+
+}
+/* .ProfileCard>span{
+    font-weight: bold;
+    color: orange;
+    align-self: center;
+    margin-bottom: 1rem;
+    cursor:pointer
+} */
+.icon-hc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+
+    flex-direction: column;
+    margin-left:15rem;
+    margin-bottom: 3rem;
+
+}
+.icon-hc:hover{
+  cursor: pointer;
+  color: var(--orange);
+  background: transparent;
+  border: 2px solid var(--orange);
+}

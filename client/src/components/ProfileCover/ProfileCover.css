@@ -1,0 +1,99 @@
+.Profilecover{
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    height: 48%;
+    overflow-x: clip;
+    background: var(--cardColor);
+}
+.ProfileImage{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+.ProfileImage>img:nth-of-type(1){
+    width: 73rem;
+    height: 18rem;
+    /* margin-left: -10rem; */
+}
+.ProfileImage>img:nth-of-type(2){
+    width: 6rem;
+    height: 6rem;
+    border-radius: 17%;
+    position: absolute;
+    bottom: 1rem;
+    left: 5rem;
+    box-shadow: var(--profileShadow);
+}
+.ProfileName-c{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -4rem;
+    gap: 5px;
+    margin-right: 42rem;
+}
+.ProfileName-c>span:nth-of-type(1){
+
+    font-weight: bold;
+}
+.icon-cv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+
+    flex-direction: column;
+    margin-left: 70rem;
+    margin-top: -3rem;
+    height: 2rem;
+
+    width: 2rem;
+}
+.icon-pc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+
+    flex-direction: column;
+    margin-left: 10rem;
+    margin-top: 2rem;
+    height: 2rem;
+
+    width: 2rem;
+    position: relative;
+
+}
+/* .icon>div:nth-of-type(1){
+    flex-direction: column;
+    margin-left: 70rem;
+    margin-top: -2rem;
+} */
+/* .icon>div:nth-of-type(2){
+    flex-direction: column;
+    margin-left: 70rem;
+    margin-bottom: -8rem;
+} */
+.icon-pc:hover{
+  cursor: pointer;
+  color: var(--orange);
+  background: transparent;
+  border: 2px solid var(--orange);
+}
+.icon-cv:hover{
+    cursor: pointer;
+    color: var(--orange);
+    background: transparent;
+    border: 2px solid var(--orange);
+  }
