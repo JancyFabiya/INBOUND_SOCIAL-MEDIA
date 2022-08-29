@@ -10,11 +10,16 @@ const cors =require('cors');
 const AuthRoute = require('./Routes/AuthRoute.js')
 const UserRoute = require('./Routes/UserRoute.js')
 const PostRoute = require('./Routes/PostRoute')
+const UploadRoute = require('./Routes/UploadRoute.js')
 
 
 //Routes
 
 const app = express();
+
+//to server images for public
+app.use(express.static('public'))
+app.use('/images',express.static("images"))
 
 //Middleware
 
@@ -32,4 +37,5 @@ app.listen(PORT,console.log(`Server started on PORT ${PORT}`))
 //usage of routes
 app.use('/auth',AuthRoute)
 app.use('/user',UserRoute)
+app.use('/upload',UploadRoute)
 app.use('/post',PostRoute)

@@ -28,6 +28,7 @@
     bottom: 1rem;
     left: 5rem;
     box-shadow: var(--profileShadow);
+    margin-bottom: -4rem;
 }
 .ProfileName-c{
     display: flex;

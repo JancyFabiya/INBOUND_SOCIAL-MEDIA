@@ -1,5 +1,5 @@
 const PostModel = require('../Models/postModel');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const UserModel = require('../Models/userModel');
 
 
@@ -8,7 +8,7 @@ const createPost = async(req,res)=>{
     const newPost = new PostModel(req.body)
     try {
         await newPost.save()
-        res.status(200).json("Post crerated!")
+        res.status(200).json(newPost)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -100,19 +100,21 @@ const getTimelinePosts = async (req,res)=>{
             {
                 $lookup: {
                     from: "posts",
-                    localField:"following",
-                    foreignField:"userId",
-                    as:"followingPosts"
+                    localField: "following",
+                    foreignField: "userId",
+                    as: "followingPosts"
                 }
             },
             {
                 $project: {
-                    followingPosts:1,
-                    _id:0
+                    followingPosts: 1,
+                    _id: 0
                 }
             }
         ])
-        res.status(200).json(currentUserPosts.concat(followingPosts))
+        // res.status(200).json(followingPosts)
+        res.status(200).json(currentUserPosts.concat(...followingPosts[0].followingPosts))
+
     } catch (error) {
         res.status(500).json(error)
 

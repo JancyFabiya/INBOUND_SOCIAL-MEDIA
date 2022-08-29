@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MenuCard.css'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import AddPostModal from '../AddPostModal/AddPostModal.jsx'
 import { BsFillBookmarkDashFill, BsFillGearFill, BsFillHouseFill, BsSignal } from 'react-icons/bs';
 const MenuCard = () => {
+  const [modalOpened , setModalOpened] = useState(false)
   return (
     <div className="MenuCard">
         <h3>Menu</h3>
@@ -37,7 +39,11 @@ const MenuCard = () => {
         <BsFillBookmarkDashFill/> 
         </div>
         <div className="Menuspan">
-        <span>Add Post</span>
+        {/* <span>Add Post</span> */}
+        <AddPostModal
+        modalOpened={modalOpened}
+        setModalOpend={setModalOpened}
+        />
         </div>
         <hr/>
         <div className='menu'>

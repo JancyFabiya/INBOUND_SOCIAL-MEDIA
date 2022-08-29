@@ -37,6 +37,7 @@ const registerUser = async(req,res)=>{
 // login User
 const loginUser = async(req,res)=>{
     const {username,password} = req.body
+    // console.log('login',req.body);
 
     try {
         const user = await UserModel.findOne({username: username})

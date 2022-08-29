@@ -8,6 +8,7 @@
     margin-top:6rem ;
     margin-left: -13rem;
     width: 165%;
+    height: 90%;
 }
 .left{
     display: flex;
@@ -17,20 +18,31 @@
 }
 .post{
     display: flex;
-    margin-top:-16.5rem ;
+    margin-top:-13rem ;
     margin-left: 1rem;
     width: 86rem;
 }
 .menus{
     display: flex;
-    margin-top: -22rem;
+    margin-top: -20rem;
     height: 2rem;
     margin-left: 52rem;
     gap: 2rem;
 }
+.menus>div:hover{
+    cursor: pointer;
+    color: orange; 
+    
+}
+.menus>div>span:nth-of-type(1){
+    cursor: pointer;
+    color: orange; 
+    font-weight: bold;
+}
 .menus>span:nth-of-type(1):hover{
     cursor: pointer;
     color: orange;
+
 }
 .menus>span:nth-of-type(2):hover{
     cursor: pointer;
@@ -41,6 +53,11 @@
     font-weight: bold;
     color: orange;
 }
+/* .menus>a>span:nth-of-type(3):hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: orange;
+} */
 .big-home{
     font-weight: bold;
 

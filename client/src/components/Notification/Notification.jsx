@@ -1,26 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Notification.css'
 import { Followers} from '../../Data/NotificationData'
+import User from '../User/User'
+import { getAllUsers } from '../../api/UserRequest'
+import {useSelector} from 'react-redux';
 const Notification = () => {
+    const [persons,setPersons] = useState([]);
+    const {user}  = useSelector((state) => state.authReducer.authData);
+
+
+    useEffect(()=>{
+        const fetchPersons = async()=>{
+            const {data} = await getAllUsers();
+            console.log('111',data);
+            setPersons(data)
+        }
+        fetchPersons()
+    },[])
   return (
 <div className="Notification">
-<h3>Notifications</h3>
-{Followers.map((follower,id)=>{
+<h3>People you may know</h3>
+{persons.map((person,id)=>{
+  if(person._id !== user._id)
+  {
     return(
-        <div className="notification">
-            <div>
-                <img src={follower.img} alt=""className='followerImg' />
-                <div className="name">
-                    <span>{follower.name}</span>
-                    <span>@{follower.username}</span>
-                </div>
-            </div>
-            <div className="butdiv">
-            <button className='button fc-button'>Accept</button>
-            <button className='button-dec'>Decline</button>
-            </div>
-        </div>
+      <User person={person} key = {id} />
     )
+  }
 })}
 </div>  
 )

@@ -11,6 +11,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import {UilPen} from '@iconscout/react-unicons'
 import { TextField } from '@mui/material';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadImage } from '../../actions/uploadAction';
+import { updateUser } from '../../actions/userAction';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -50,9 +55,64 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs(data) {
   const [open, setOpen] = React.useState(false);
+const {password, ...other} = data;
+const [formData, setFormData] = useState(other)
+const [profileImage, setProfileImage] = useState(null)
+const [coverImage,setCoverImage] = useState(null)
+const dispatch = useDispatch()
+const param = useParams()
+const {user} = useSelector((state)=>state.authReducer.authData)
+console.log('modal',data)
 
+const handleChange = (e)=>{
+  setFormData({...formData,[e.target.name]:e.target.value})
+}
+
+const onImageChange =(event)=>{
+  if (event.target.files && event.target.files[0]){
+    let img = event.target.files[0];
+    event.target.name === "profileImage"
+    ? setProfileImage(img)
+    : setCoverImage(img);
+  }
+}
+
+const handleSubmit = (e)=>{
+  e.preventDefault();
+  let UserData = formData;
+  if(profileImage){
+    const data = new FormData();
+    const fileName = Date.now() + profileImage.name;
+    data.append("name",fileName);
+    data.append("file",profileImage);
+    UserData.profilePicture =fileName;
+    try {
+      dispatch(uploadImage(data));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  if(coverImage){
+    const data = new FormData();
+    const fileName = Date.now() + coverImage.name;
+    data.append("name",fileName);
+    data.append("file",coverImage);
+    UserData.coverPicture = fileName;
+    try{
+      dispatch(uploadImage(data));
+    }catch(err){
+      console.log(err);
+    }
+  }
+  console.log('paramid',param.id);
+  console.log('userdata',UserData);
+  dispatch(updateUser(param.id, UserData));
+  setOpen(false);
+}
+
+// console.log('formdata',formData.data.firstname);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -76,6 +136,38 @@ export default function CustomizedDialogs() {
         <DialogContent >
         <form className='infoForm'>
                <h3>Your info</h3>
+               <div>
+                <TextField
+                            id="outlined-textarea"
+                            label="First-Name"
+                            className="infoInput"
+                            name="firstname"
+                            color='warning'
+                            onChange={handleChange}
+                            value={formData.data.firstname}
+                            multiline
+                          />
+                 {/* <input type="text" 
+                 className='infoInput'
+                 name='Livesin'
+                 placeholder='Lives in'
+                  /> */}
+                   <TextField
+                            id="outlined-textarea"
+                            label="Last-Name"
+                            className="infoInput"
+                            name="lastname"
+                            color='warning'
+                            onChange={handleChange}
+                            value={formData.data.lastname}
+                            multiline
+                          />
+                  {/* <input type="text" 
+                 className='infoInput'
+                 name='Country'
+                 placeholder='Country'
+                  /> */}
+                </div>
                 <div>
                 <TextField
                             id="outlined-textarea"
@@ -83,8 +175,8 @@ export default function CustomizedDialogs() {
                             className="infoInput"
                             name="livesin"
                             color='warning'
-                            // onChange={handleChange}
-                            // value={data.lastname}
+                            onChange={handleChange}
+                            value={formData.data.livesin}
                             multiline
                           />
                  {/* <input type="text" 
@@ -98,8 +190,8 @@ export default function CustomizedDialogs() {
                             className="infoInput"
                             name="country"
                             color='warning'
-                            // onChange={handleChange}
-                            // value={data.lastname}
+                            onChange={handleChange}
+                            value={formData.data.country}
                             multiline
                           />
                   {/* <input type="text" 
@@ -115,8 +207,8 @@ export default function CustomizedDialogs() {
                             className="infoInput"
                             name="relationship"
                             color='warning'
-                            // onChange={handleChange}
-                            // value={data.lastname}
+                            onChange={handleChange}
+                            value={formData.data.relationship}
                             multiline
                           />
                 {/* <input type="text" 
@@ -132,8 +224,8 @@ export default function CustomizedDialogs() {
                             className="infoInput"
                             name="education"
                             color='warning'
-                            // onChange={handleChange}
-                            // value={data.lastname}
+                            onChange={handleChange}
+                            value={formData.data.education}
                             multiline
                           />
                 {/* <input type="text" 
@@ -145,10 +237,10 @@ export default function CustomizedDialogs() {
                             id="outlined-textarea"
                             label="Works at"
                             className="infoInput"
-                            name="worksat"
+                            name="worksAt"
                             color='warning'
-                            // onChange={handleChange}
-                            // value={data.lastname}
+                            onChange={handleChange}
+                            value={formData.data.worksAt}
                             multiline
                           />
                   {/* <input type="text" 
@@ -157,13 +249,20 @@ export default function CustomizedDialogs() {
                  placeholder='Works at'
                   /> */}
                 </div>
+                <div>
+                  Profile Image
+                  <input type="file" name='profileImage' onChange={onImageChange} />
+                  Cover Image
+                  <input type="file" name='coverImage' onChange={onImageChange}/>
+
+                </div>
             </form>
         </DialogContent>
         <DialogActions>
           {/* <Button autoFocus onClick={handleClose}>
             Save changes
           </Button> */}
-          <button className="button infoButton" style={{width:'8rem'}}>Save Changes</button>
+          <button className="button infoButton" style={{width:'8rem'}} onClick={handleSubmit}>Save Changes</button>
         </DialogActions>
       </BootstrapDialog>
     </div>

@@ -71,6 +71,7 @@
     height: 2rem;
     width: 99%;
 }
+
 .infoButton{
     width: 6rem;
     height:2rem;
@@ -88,7 +89,14 @@
 }
 
 
-
+/* .span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+} */
+/* input:invalid ~ span{
+    display: block;
+} */
 
 /* .col-lg-6{
     display: flex;
