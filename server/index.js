@@ -11,7 +11,8 @@ const AuthRoute = require('./Routes/AuthRoute.js')
 const UserRoute = require('./Routes/UserRoute.js')
 const PostRoute = require('./Routes/PostRoute')
 const UploadRoute = require('./Routes/UploadRoute.js')
-
+const ChatRoute = require("./Routes/ChatRoute.js")
+const MessageRoute = require("./Routes/MessageRoute.js")
 
 //Routes
 
@@ -39,3 +40,5 @@ app.use('/auth',AuthRoute)
 app.use('/user',UserRoute)
 app.use('/upload',UploadRoute)
 app.use('/post',PostRoute)
+app.use('/chat',ChatRoute)
+app.use('/message',MessageRoute)

@@ -4,8 +4,11 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import AddPostModal from '../AddPostModal/AddPostModal.jsx'
 import { BsFillBookmarkDashFill, BsFillGearFill, BsFillHouseFill, BsSignal } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
+
 const MenuCard = () => {
   const [modalOpened , setModalOpened] = useState(false)
+  const navigate = useNavigate();
   return (
     <div className="MenuCard">
         <h3>Menu</h3>
@@ -24,15 +27,22 @@ const MenuCard = () => {
         <div className='menu'>
         <BsFillHouseFill/> 
         </div>
-        <div className="Menuspan">
+        
+          <Link style={{textDecoration: "none",color: "inherit"}} to="../chat">
+          <div className="Menuspan">
         <span>Home</span>
         </div>
+        </Link>
+
         <hr/>
         <div className='menu'>
         <BsSignal/> 
         </div>
         <div className="Menuspan">
-        <span>Message</span>
+        <span
+        onClick={()=>{
+          navigate("/chat")
+        }}>Message</span>
         </div>
         <hr/>
         <div className='menu'>

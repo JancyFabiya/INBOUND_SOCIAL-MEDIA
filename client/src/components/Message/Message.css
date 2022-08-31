@@ -1,0 +1,24 @@
+.Message{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.Message>:nth-child(2){
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+    /* justify-content: center; */
+    gap: 1rem;
+    padding: 1rem;
+}
+.Message>:nth-child(4){
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-left: 10px;
+   padding-bottom: 115px;
+
+}
+
