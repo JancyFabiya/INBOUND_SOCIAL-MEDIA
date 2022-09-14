@@ -3,6 +3,9 @@ import InfoCard from "../InfoCard/InfoCard";
 import LogoSearch from "../LogoSearch/LogoSearch";
 import RightSearch from "../RightSearch/RightSearch";
 import "./ProfileNav.css";
+
+
+
 const ProfileNav = () => {
   return (
     <div className="ProfileLeft">
@@ -14,6 +17,7 @@ const ProfileNav = () => {
       <RightSearch/>
 
       </div>
+
     </div>
   );
 };

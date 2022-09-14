@@ -19,7 +19,7 @@ const MenuCard = () => {
         '& > :not(style)': {
           m: 1,
           width: 240,
-          height: 240,
+          height: 180,
         },
       }}
     >
@@ -28,7 +28,7 @@ const MenuCard = () => {
         <BsFillHouseFill/> 
         </div>
         
-          <Link style={{textDecoration: "none",color: "inherit"}} to="../chat">
+          <Link style={{textDecoration: "none",color: "inherit"}} to="../home">
           <div className="Menuspan">
         <span>Home</span>
         </div>
@@ -55,13 +55,13 @@ const MenuCard = () => {
         setModalOpend={setModalOpened}
         />
         </div>
-        <hr/>
+        {/* <hr/>
         <div className='menu'>
         <BsFillGearFill/> 
         </div>
         <div className="Menuspan">
         <span>Settings</span>
-        </div>
+        </div> */}
         
         </Paper> 
       

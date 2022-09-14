@@ -12,6 +12,8 @@ const RightSearch = () => {
   const dispatch = useDispatch()
 
   const handleLogOut = () => {
+    // localStorage.removeItem('profile')
+    // localStorage.removeItem('store.authReducer')
     dispatch(logOut())
 }
 

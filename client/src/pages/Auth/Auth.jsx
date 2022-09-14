@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Auth.css";
 import Logo from "../../img/log.jpg";
 // import Signup from "../../components/Signuup/Signup";
@@ -12,9 +12,41 @@ import { TextField } from "@mui/material";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Formik, useField, ErrorMessage } from "formik";
 import { FloatingLabel, Form } from "react-bootstrap";
-import * as Yup from "yup";
+import axios from "axios";
 
 const Auth = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.authReducer.loading);
+  const [isSignUp, setIsSignUp] = useState(true);
+  // console.log(loading);
+
+  const google = (window.google = window.google ? window.google : {});
+
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "942641737589-8p9d1771hcq0g4e2ukmej1kp5o9r2hoe.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
+
+  const handleCallbackResponse = async (response) => {
+    console.log(response);
+    try {
+      const result = await axios({
+        method: "POST",
+        url: ` /auth/googlelogin`,
+        data: { idToken: response.credential },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //yup
   // const validate = Yup.object({
   //   firstname: Yup.string()
@@ -34,10 +66,6 @@ const Auth = () => {
   //   .required('Conform Password is required'),
   // })
 
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.authReducer.loading);
-  const [isSignUp, setIsSignUp] = useState(true);
-  console.log(loading);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -85,6 +113,7 @@ const Auth = () => {
       conformpassword: "",
     });
   };
+
   return (
     <div className="Auth">
       <div className="container">
@@ -99,22 +128,21 @@ const Auth = () => {
           </div>
           {/* {isSignUp ? <Signup/> : <Login/>} */}
           <div className="col-lg-6">
-          {isSignUp && (
-            <Box
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                "& > :not(style)": {
-                  m: 1,
-                  width: 460,
-                  height: 430,
-                },
-              }}
-            >
-              
-              <Paper elevation={3}>
-                <div className="a-right">
-                  {/* <Formik
+            {isSignUp && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  "& > :not(style)": {
+                    m: 1,
+                    width: 460,
+                    height: 430,
+                  },
+                }}
+              >
+                <Paper elevation={3}>
+                  <div className="a-right">
+                    {/* <Formik
                    initialValues={{
                     firstname: "",
                     lastname: "",
@@ -125,14 +153,14 @@ const Auth = () => {
                    validationSchema={validate}
                    >
                     {formik =>( */}
-                  <Form
-                    noValidate
-                    validated={validated}
-                    className="infoForm"
-                    onSubmit={handleSubmit}
-                  >
-                    <h3> Sign up </h3>
-                   
+                    <Form
+                      noValidate
+                      validated={validated}
+                      className="infoForm"
+                      onSubmit={handleSubmit}
+                    >
+                      <h3> Sign up </h3>
+
                       <div>
                         <Form.Group controlId="validationCustomUsername">
                           <FloatingLabel
@@ -141,7 +169,7 @@ const Auth = () => {
                             className="mb-3"
                           >
                             <Form.Control
-                              id="outlined-textarea"
+                              // id="outlined-textarea"
                               // label="First Name"
                               placeholder="First Name"
                               className="infoInput"
@@ -149,7 +177,7 @@ const Auth = () => {
                               color="warning"
                               onChange={handleChange}
                               value={data.firstname}
-                              multiline
+                              // multiline
                               required
                             />
                           </FloatingLabel>
@@ -164,7 +192,7 @@ const Auth = () => {
                             className="mb-3"
                           >
                             <Form.Control
-                              id="outlined-textarea"
+                              // id="outlined-textarea"
                               placeholder="Last Name"
                               className="infoInput"
                               name="lastname"
@@ -172,7 +200,7 @@ const Auth = () => {
                               onChange={handleChange}
                               value={data.lastname}
                               // htmlFor={field.lastname}
-                              multiline
+                              // multiline
                               required
                             />
                           </FloatingLabel>
@@ -183,33 +211,31 @@ const Auth = () => {
 
                         {/* <ErrorMessage name={field.lastname} /> */}
                       </div>
-                 
 
-                    
-                    <div>
-                      <Form.Group controlId="validationCustomUsername">
-                        <FloatingLabel
-                          controlId="floatingInput"
-                          label="Password"
-                          className="mb-3"
-                        >
-                          <Form.Control
-                            id="outlined-password-input"
-                            placeholder="Password"
-                            type="password"
-                            className="infoInput"
-                            name="password"
-                            color="warning"
-                            onChange={handleChange}
-                            value={data.password}
-                            autoComplete="current-password"
-                            required
-                          />
-                        </FloatingLabel>
-                        <Form.Control.Feedback type="invalid">
-                          Please choose a password.
-                        </Form.Control.Feedback>
-                      </Form.Group>
+                      <div>
+                        <Form.Group controlId="validationCustomUsername">
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Password"
+                            className="mb-3"
+                          >
+                            <Form.Control
+                              // id="outlined-password-input"
+                              placeholder="Password"
+                              type="password"
+                              className="infoInput"
+                              name="password"
+                              color="warning"
+                              onChange={handleChange}
+                              value={data.password}
+                              autoComplete="current-password"
+                              required
+                            />
+                          </FloatingLabel>
+                          <Form.Control.Feedback type="invalid">
+                            Please choose a password.
+                          </Form.Control.Feedback>
+                        </Form.Group>
 
                         <Form.Group controlId="validationCustomUsername">
                           <FloatingLabel
@@ -218,7 +244,7 @@ const Auth = () => {
                             className="mb-3"
                           >
                             <Form.Control
-                              id="outlined-password-input"
+                              // id="outlined-password-input"
                               placeholder="Conform Password"
                               type="password"
                               className="infoInput"
@@ -234,89 +260,83 @@ const Auth = () => {
                             Please choose a conform-password.
                           </Form.Control.Feedback>
                         </Form.Group>
-                    
-                    </div>
-                    <div>
-                      <Form.Group controlId="validationCustomUsername">
-                        <FloatingLabel
-                          controlId="floatingInput"
-                          label="Email"
-                          className="mb-3"
-                        >
-                          <Form.Control
-                            id="outlined-textarea"
-                            placeholder="Email"
-                            className="infoInput"
-                            name="username"
-                            color="warning"
-                            onChange={handleChange}
-                            value={data.username}
-                            multiline
-                            required
-                          />
-                        </FloatingLabel>
-                        <Form.Control.Feedback type="invalid">
-                          Please choose a Email.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </div>
-                    <span
-                      style={{
-                        display: conformPass ? "none" : "block",
-                        color: "red",
-                        fontSize: "12px",
-                        alignSelf: "flex-end",
-                        marginRight: "5px",
-                      }}
-                    >
-                      *Conform Password is not same
-                    </span>
-                    <div>
+                      </div>
+                      <div>
+                        <Form.Group controlId="validationCustomUsername">
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Email"
+                            className="mb-3"
+                          >
+                            <Form.Control
+                              // id="outlined-textarea"
+                              placeholder="Email"
+                              className="infoInput"
+                              name="username"
+                              color="warning"
+                              onChange={handleChange}
+                              value={data.username}
+                              // multiline
+                              required
+                            />
+                          </FloatingLabel>
+                          <Form.Control.Feedback type="invalid">
+                            Please choose a Email.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </div>
                       <span
-                        style={{ cursor: "pointer", color: "orange" }}
-                        onClick={() => {
-                          setIsSignUp((prev) => !prev);
-                          resetForm();
+                        style={{
+                          display: conformPass ? "none" : "block",
+                          color: "red",
+                          fontSize: "12px",
+                          alignSelf: "flex-end",
+                          marginRight: "5px",
                         }}
                       >
-                      
-                           "Already have an account.Login!"
-                         
+                        *Conform Password is not same
                       </span>
-                    </div>
-                    <button
-                      className="button infoButton"
-                      type="submit"
-                      disabled={loading}
-                    >
-                      {loading ? "Loading..." : "Signup" }
-                    </button>
-                  </Form>
-                  {/* )}
+                      <div>
+                        <span
+                          style={{ cursor: "pointer", color: "orange" }}
+                          onClick={() => {
+                            setIsSignUp((prev) => !prev);
+                            resetForm();
+                          }}
+                        >
+                          "Already have an account.Login!"
+                        </span>
+                      </div>
+                      <button
+                        className="button infoButton"
+                        type="submit"
+                        disabled={loading}
+                      >
+                        {loading ? "Loading..." : "Signup"}
+                      </button>
+                    </Form>
+                    {/* )}
                   </Formik> */}
-                </div>
-              </Paper>
-            </Box>
+                  </div>
+                </Paper>
+              </Box>
             )}
 
-
-
-{!isSignUp && (
-<Box
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                "& > :not(style)": {
-                  m: 1,
-                  width: 360,
-                  height: 330,
-                },
-              }}
-            >
-              
-              <Paper elevation={3}>
-                <div className="a-right">
-                  {/* <Formik
+            {!isSignUp && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  "& > :not(style)": {
+                    m: 1,
+                    width: 360,
+                    height: 390,
+                  },
+                }}
+              >
+                <Paper elevation={3}>
+                  <div className="a-right">
+                    {/* <Formik
                    initialValues={{
                     firstname: "",
                     lastname: "",
@@ -327,66 +347,64 @@ const Auth = () => {
                    validationSchema={validate}
                    >
                     {formik =>( */}
-                  <Form
-                    noValidate
-                    validated={validated}
-                    className="infoForm"
-                    onSubmit={handleSubmit}
-                  >
-                    <h3> Log in</h3>
-               
+                    <Form
+                      noValidate
+                      validated={validated}
+                      className="infoForm"
+                      onSubmit={handleSubmit}
+                    >
+                      <h3> Log in</h3>
 
-                    <div>
-                      <Form.Group controlId="validationCustomUsername">
-                        <FloatingLabel
-                          controlId="floatingInput"
-                          label="Email"
-                          className="mb-3"
-                        >
-                          <Form.Control
-                            id="outlined-textarea"
-                            placeholder="Email"
-                            className="infoInput"
-                            name="username"
-                            color="warning"
-                            onChange={handleChange}
-                            value={data.username}
-                            multiline
-                            required
-                          />
-                        </FloatingLabel>
-                        <Form.Control.Feedback type="invalid">
-                          Please choose a Email.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </div>
-                    <div>
-                      <Form.Group controlId="validationCustomUsername">
-                        <FloatingLabel
-                          controlId="floatingInput"
-                          label="Password"
-                          className="mb-3"
-                        >
-                          <Form.Control
-                            id="outlined-password-input"
-                            placeholder="Password"
-                            type="password"
-                            className="infoInput"
-                            name="password"
-                            color="warning"
-                            onChange={handleChange}
-                            value={data.password}
-                            autoComplete="current-password"
-                            required
-                          />
-                        </FloatingLabel>
-                        <Form.Control.Feedback type="invalid">
-                          Please choose a password.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                                        </div>
-                    <span
+                      <div>
+                        <Form.Group controlId="validationCustomUsername">
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Email"
+                            className="mb-3"
+                          >
+                            <Form.Control
+                              // id="outlined-textarea"
+                              placeholder="Email"
+                              className="infoInput"
+                              name="username"
+                              color="warning"
+                              onChange={handleChange}
+                              value={data.username}
+                              // multiline
+                              required
+                            />
+                          </FloatingLabel>
+                          <Form.Control.Feedback type="invalid">
+                            Please choose a Email.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </div>
+                      <div>
+                        <Form.Group controlId="validationCustomUsername">
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Password"
+                            className="mb-3"
+                          >
+                            <Form.Control
+                              // id="outlined-password-input"
+                              placeholder="Password"
+                              type="password"
+                              className="infoInput"
+                              name="password"
+                              color="warning"
+                              onChange={handleChange}
+                              value={data.password}
+                              autoComplete="current-password"
+                              required
+                            />
+                          </FloatingLabel>
+                          <Form.Control.Feedback type="invalid">
+                            Please choose a password.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </div>
+                      {/* <span
                       style={{
                         display: conformPass ? "none" : "block",
                         color: "red",
@@ -396,34 +414,34 @@ const Auth = () => {
                       }}
                     >
                       *Conform Password is not same
-                    </span>
-                    <div>
-                      <span
-                        style={{ cursor: "pointer", color: "orange" }}
-                        onClick={() => {
-                          setIsSignUp((prev) => !prev);
-                          resetForm();
-                        }}
+                    </span> */}
+                      <div>
+                        <span
+                          style={{ cursor: "pointer", color: "orange" }}
+                          onClick={() => {
+                            setIsSignUp((prev) => !prev);
+                            resetForm();
+                          }}
+                        >
+                          "Don't have an account. Sign up!"
+                        </span>
+                      </div>
+
+                      <button
+                        className="button infoButton"
+                        type="submit"
+                        disabled={loading}
                       >
-                       
-                           "Don't have an account. Sign up!"
-                      </span>
-                    </div>
-                    <button
-                      className="button infoButton"
-                      type="submit"
-                      disabled={loading}
-                    >
-                      {loading ? "Loading..." :  "Login"}
-                    </button>
-                  </Form>
-                  {/* )}
+                        {loading ? "Loading..." : "Login"}
+                      </button>
+                      <div id="signInDiv"></div>
+                    </Form>
+                    {/* )}
                   </Formik> */}
-                </div>
-              </Paper>
-            </Box>
-)}
-            
+                  </div>
+                </Paper>
+              </Box>
+            )}
           </div>
         </div>
       </div>

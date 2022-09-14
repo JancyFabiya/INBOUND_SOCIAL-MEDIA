@@ -1,0 +1,13 @@
+.login{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 4rem;
+        /* position: relative; */
+        background-image: url('../../img/b6.webp');
+        background-position: center;
+        background-size:cover;
+    
+    
+}

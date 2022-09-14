@@ -3,8 +3,8 @@ const postReducer=(
     action
     
  )=>{
-    console.log('555');
-    console.log(action);
+    // console.log('555');
+    // console.log(action);
     switch(action.type){
         case "UPLOAD_START":
             return {...state,uploading:true,error:false}

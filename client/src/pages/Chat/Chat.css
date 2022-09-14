@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns:18rem auto 20rem ;
     gap: 1rem;
-    /* grid-template-columns: 22% auto; */
+    /*grid-template-columns: 22% auto; */
 }
 .Chat-container {
     display: flex;
@@ -15,6 +15,19 @@
     height: auto;
     min-height: 80vh;
     overflow: scroll;
+  }
+
+  .msg{
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 82rem; */
+    margin-top: 3rem;
+  }
+  .msg>h3{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom:2rem ;
   }
 
 /* .Chat {

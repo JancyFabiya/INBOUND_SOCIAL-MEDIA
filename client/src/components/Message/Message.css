@@ -22,3 +22,11 @@
 
 }
 
+.conversation:hover {
+    background: #80808038;
+    cursor: pointer;
+  }
+  .conversation{
+    height: 65px;
+    border-radius: 0.5rem;
+  }
