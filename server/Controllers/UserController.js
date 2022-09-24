@@ -6,12 +6,21 @@ const jwt = require('jsonwebtoken')
  const getAllUsers = async (req,res) =>{
     try {
         let users = await UserModel.find({isAdmin:false});
-
-        users = users.map((user)=>{
+        let logUser = await UserModel.findById(req.params.id)
+         let follow =logUser.following
+         let newUser = users.filter((e)=>{
+            if(!follow.includes(e._id)){
+                return e
+            }
+         })
+         console.log(newUser,'//////////');
+         newUser = newUser.map((user)=>{
             const {password,...otherDetails} = user._doc
             return otherDetails
         })
-        res.status(200).json(users)
+        console.log('@@@@',users);
+
+        res.status(200).json(newUser)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -133,4 +142,17 @@ const unFollowUser = async (req,res)=>{
     }
 }
 
-module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser}
+
+// Find friend details
+const friendPerson = async(req,res)=>{
+    try{
+        const friend = await UserModel.findById(req.params.id)
+
+        res.status(200).json(friend)
+    }catch(error){
+        res.status(500).json(error)
+    }
+}
+
+
+module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson}

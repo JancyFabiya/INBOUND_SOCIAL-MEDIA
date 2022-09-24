@@ -1,7 +1,8 @@
 const UserModel = require('../Models/userModel');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
-const { OAuth2Client } =require("google-auth-library")
+const { OAuth2Client } =require("google-auth-library");
+const ChatModel = require('../Models/ChatModel');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 

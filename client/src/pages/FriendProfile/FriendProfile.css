@@ -1,0 +1,78 @@
+.profile1{
+    /* display: flex;
+    flex-direction: column;
+    grid-template-columns: 18rem auto 20rem;
+    gap: 1rem;
+    width: 18%; */
+    position: relative;
+    display: grid;
+    grid-template-columns: 18rem auto 20rem;
+    gap: 1rem;
+  
+}
+.cover1{
+    display: flex;
+    position: relative;
+
+    margin-top:8rem ;
+    margin-left: -8rem;
+    width: 152rem;
+    height: 97%;
+}
+.left1{
+    display: flex;
+    margin-top: -3rem;
+    margin-left: -58rem;
+    width: 85%;
+}
+.post1{
+    display: flex;
+    margin-top: -13rem;
+    margin-left: 17rem;
+    width: 66rem;
+
+}
+
+.menus1{
+    display: flex;
+    margin-top: -16rem;
+    height: 2rem;
+    margin-left: 72rem;
+    gap: 2rem;
+}
+/* .menus1>div:hover{
+    cursor: pointer;
+    color: orange; 
+    
+}
+.menus1>div>span:nth-of-type(1){
+    cursor: pointer;
+    color: orange; 
+    font-weight: bold;
+} */
+.menus1>span:nth-of-type(1):hover{
+    cursor: pointer;
+    color: orange;
+
+}
+.menus1>span:nth-of-type(2):hover{
+    cursor: pointer;
+    color: orange;
+}
+.menus1>span:nth-of-type(3):hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: orange;
+}
+/* .menus>a>span:nth-of-type(3):hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: orange;
+} */
+.bighome{
+    font-weight: bold;
+
+}
+.bighome{
+    cursor:pointer
+}

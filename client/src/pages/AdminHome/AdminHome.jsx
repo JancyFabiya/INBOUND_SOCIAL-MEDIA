@@ -48,9 +48,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const AdminHome = () => {
 
   const [persons,setPersons] = useState([]);
-    const {user}  = useSelector((state) => state.authReducer.authData);
+    // const {user}  = useSelector((state) => state.authReducer.authData);
+    
+    // console.log('post',user);
     const posts = useSelector((state) => state.postReducer.posts);
-
+console.log(posts);
 
     useEffect(()=>{
         const fetchPersons = async()=>{
@@ -75,7 +77,7 @@ const AdminHome = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell>USERS</StyledTableCell>
-            <StyledTableCell align="right">POSTS</StyledTableCell>
+            {/* <StyledTableCell align="right">POSTS</StyledTableCell> */}
             <StyledTableCell align="right">NO.OF.FOLLOWERS</StyledTableCell>
             <StyledTableCell align="right">NO.OF.FOLLOWING</StyledTableCell>
             <StyledTableCell align="right">EMAIL</StyledTableCell>
@@ -88,7 +90,7 @@ const AdminHome = () => {
               <StyledTableCell component="th" scope="row">
                 {row.firstname} {row.lastname}
               </StyledTableCell>
-              <StyledTableCell align="right">{posts.filter((post)=>post.userId === user._id).length}</StyledTableCell>
+              {/* <StyledTableCell align="right">{posts.filter((post)=>post.userId === user._id).length}</StyledTableCell> */}
               <StyledTableCell align="right">{row.followers.length}</StyledTableCell>
               <StyledTableCell align="right">{row.following.length}</StyledTableCell>
               <StyledTableCell align="right">{row.username}</StyledTableCell>

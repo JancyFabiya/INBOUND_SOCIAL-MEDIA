@@ -14,7 +14,7 @@ const Profile = () => {
     <div className="Profile">
       <ProfileNav />
       <div className="cover">
-        <ProfileCover />
+        <ProfileCover location = 'profilePage'/>
       </div>
       <div className="left">
         <InfoCard />
@@ -34,9 +34,7 @@ const Profile = () => {
           {" "}
           Home
         </span>
-        {/* <Link style={{textDecoration: "none",color: "inherit" }} to = '../home'>
-    <span className='big-home'>Home</span>
-    </Link> */}
+      
       </div>
       <div className="post">
         <Posts />

@@ -47,7 +47,7 @@ const AdminLogin = () => {
                 <div className='col-lg-6'>
                 <Card style={{width: '18rem',marginRight:'38rem'}} className='my-5 cardcolor'>
       <Card.Body>
-         <Form onSubmit={handleSubmit}>Login
+         <Form onSubmit={handleSubmit}><div className ="title">Admin Login</div>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email"  name="username" value={data.username} onChange={handleChange}/>

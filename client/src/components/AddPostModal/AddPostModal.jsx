@@ -186,7 +186,7 @@ export default function CustomizedDialogs() {
                     <UilScenery />
                     Photo
                   </div>
-                  <div className="option" style={{ color: "var(--video)" }}>
+                  {/* <div className="option" style={{ color: "var(--video)" }}>
                     <UilPlayCircle />
                     Video
                   </div>
@@ -197,7 +197,7 @@ export default function CustomizedDialogs() {
                   <div className="option" style={{ color: "var(--shedule)" }}>
                     <UilSchedule />
                     Shedule
-                  </div>
+                  </div> */}
                 </div>
                 {/* <RadioGroup
                   row

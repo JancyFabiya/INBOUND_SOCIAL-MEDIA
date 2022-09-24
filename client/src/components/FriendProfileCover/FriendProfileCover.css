@@ -1,0 +1,12 @@
+.Profilename{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -1rem;
+    gap: 5px;
+    margin-right: 42rem;
+}
+.Profilename>span:nth-of-type(1){
+
+    font-weight: bold;
+}

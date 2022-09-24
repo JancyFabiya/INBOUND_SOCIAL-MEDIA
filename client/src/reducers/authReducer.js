@@ -6,6 +6,7 @@ const authReducer = (
         case "AUTH_START":
             return { ...state, loading: true, error: false }
         case "AUTH_SUCCESS":
+            // console.log('aqee',a/ction.data);
             localStorage.setItem('profile', JSON.stringify({ ...action?.data }))
             return { ...state, authData: action.data, loading: false, error: false }
         case "AUTH_FAIL":
@@ -22,10 +23,12 @@ const authReducer = (
 
 
         case "FOLLOW_USER":
+            console.log('heloooooo',state.authData);
             return { ...state, authData: { ...state.authData, user: { ...state.authData.user, following: [...state.authData.user.following, action.data] } } }
 
 
         case "UNFOLLOW_USER":
+            console.log('haiiiiiii',state.authData);
             return { ...state, authData: { ...state.authData, user: { ...state.authData.user, following: [...state.authData.user.following.filter((personId) => personId !== action.data)] } } }
 
         case "LOG_OUT":

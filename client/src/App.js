@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import AdminLogin from './pages/AdminLogin/AdminLogin';
 import AdminHome from './pages/AdminHome/AdminHome'
+import FriendProfile from './pages/FriendProfile/FriendProfile';
 
 function App() {
   const user = useSelector((state) => state.authReducer.authData)
@@ -31,6 +32,7 @@ function App() {
         {/* <Route path='/profile' element={<Profile/> } /> */}
         <Route path='/profile/:id' element = {user? <Profile/> : <Navigate to="../auth"/>}/>
         <Route path='/chat' element={user ? <Chat/> : <Navigate to ="../auth" />} />
+        <Route path='/friendProfile/:id' element={user ? <FriendProfile/>: <Navigate to="../auth"/>}/>
       </Routes>
     </div>
   );
