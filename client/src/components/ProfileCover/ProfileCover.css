@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -4rem;
+    margin-top: -1rem;
     gap: 5px;
     margin-right: 42rem;
 }

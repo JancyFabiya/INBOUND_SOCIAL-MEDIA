@@ -17,17 +17,17 @@ const Message = () => {
       try {
         const { data } = await userChats(user._id);
         setChats(data);
-        console.log("chat");
-        console.log(data);
+        // console.log("chat");
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
     getChats();
   }, [user]);
-  console.log("44");
-  console.log(chats);
-  console.log(user._id);
+  // console.log("44");
+  // console.log(chats);
+  // console.log(user._id);
   return (
     <div className="Message">
       <h3>Messages</h3>

@@ -112,6 +112,8 @@ const getTimelinePosts = async (req,res)=>{
                 }
             }
         ])
+        // console.log('qqqqq',followingPosts[0]);
+        // console.log('ccc',currentUserPosts);
         // res.status(200).json(followingPosts)
         res.status(200).json(currentUserPosts.concat(...followingPosts[0].followingPosts))
 

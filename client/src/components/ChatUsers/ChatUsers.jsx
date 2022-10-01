@@ -17,19 +17,19 @@ const ChatUsers = ({ data, currentUserId,online }) => {
 
   //   setFollowing((prev) => !prev);
   // };
-  console.log("chatuser");
-  console.log({ data }, currentUserId);
+  // console.log("chatuser");
+  // console.log({ data }, currentUserId);
 
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const userId = data.members.find((id) => id !== currentUserId);
-    console.log(userId);
-    console.log("dep");
+    // console.log(userId);
+    // console.log("dep");
     const getUserData = async () => {
       try {
         const { data } = await getUser(userId);
         setUserData(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }

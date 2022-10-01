@@ -3,5 +3,9 @@
     flex-direction: column;
     gap: 1rem;
     height: 100vh;
+    /* overflow: auto; */
+}
+.posts{
     overflow: auto;
+
 }

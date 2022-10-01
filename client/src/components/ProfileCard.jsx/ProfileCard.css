@@ -20,12 +20,13 @@
     padding-right: 18%;
 
 }
-.ProfileImages>img:nth-of-type(1){
+/* .ProfileImages>img:nth-of-type(1){
     width: 100%;
-}
+} */
 
 .ProfileImages>img:nth-of-type(1){
     width:5rem;
+    height: 4rem;
     border-radius: 17%;
     position: absolute;
     left:-0rem;
@@ -68,5 +69,5 @@
   cursor: pointer;
   color: var(--orange);
   background: transparent;
-  border: 2px solid var(--orange);
+  border: 1px solid var(--orange);
 }

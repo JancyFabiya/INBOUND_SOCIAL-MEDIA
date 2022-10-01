@@ -21,10 +21,10 @@ const RightSearch = () => {
 <div className="right">
 <div className="Search">
   {/* <TextField id="filled-hidden-label-small" color='warning' label="Search"/> */}
-    <input type="text" placeholder='Search'/>
+    {/* <input type="text" placeholder='Search'/>
     <div className="s-icon-r">
         <UilSearch/>
-    </div>
+    </div> */}
     
 </div>
 <div className="Logout-r">

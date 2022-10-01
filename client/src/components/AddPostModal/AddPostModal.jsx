@@ -77,9 +77,9 @@ export default function CustomizedDialogs() {
   const imageRef = useRef();
   const desc = useRef();
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log(serverPublic);
-  console.log('gfhjk');
-  console.log(user._id);
+  // console.log(serverPublic);
+  // console.log('gfhjk');
+  // console.log(user._id);
   const dispatch = useDispatch();
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -116,8 +116,8 @@ export default function CustomizedDialogs() {
         console.log(error);
       }
     }
-    console.log('2222')
-    console.log(newPost);
+    // console.log('2222')
+    // console.log(newPost);
     dispatch(uploadPost(newPost))
     reset()
     setOpen(false);

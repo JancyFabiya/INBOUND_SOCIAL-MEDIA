@@ -17,7 +17,7 @@ const FriendProfile = () => {
   const [friend,setFriend] = useState([])
     const dispatch = useDispatch();
 let id = useParams();
-console.log(id.id);
+console.log('iddd',id.id);
 
 useEffect(() => {
   console.log('oooo');
@@ -26,7 +26,7 @@ const getFriend = async () =>{
   try {
     const {data} = await friendPerson(id.id)
     setFriend(data)
-    console.log(data);
+    console.log('grtfrnd',data);
   } catch (error) {
     console.log(error);
   }
@@ -61,7 +61,7 @@ const getFriend = async () =>{
         </span>
       
       </div>
-      <div className='post1'>
+      <div className='post'>
         <Posts/>
       </div>
     </div>

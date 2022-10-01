@@ -31,7 +31,12 @@ const userSchema = mongoose.Schema(
         relationship: String,
         education:String,
         followers: [],
-        following: []
+        following: [],
+        verified:{
+            type: Boolean,
+            required: true,
+            default: false
+        }
 
     },
     {timestamps: true}    

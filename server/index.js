@@ -9,10 +9,12 @@ const cors =require('cors');
 
 const AuthRoute = require('./Routes/AuthRoute.js')
 const UserRoute = require('./Routes/UserRoute.js')
-const PostRoute = require('./Routes/PostRoute')
+const PostRoute = require('./Routes/PostRoute.js')
 const UploadRoute = require('./Routes/UploadRoute.js')
 const ChatRoute = require("./Routes/ChatRoute.js")
 const MessageRoute = require("./Routes/MessageRoute.js")
+const CommandRoute = require("./Routes/CommandRoute.js")
+const StoryRoute = require("./Routes/StoryRoute.js")
 
 //Routes
 
@@ -42,3 +44,5 @@ app.use('/upload',UploadRoute)
 app.use('/post',PostRoute)
 app.use('/chat',ChatRoute)
 app.use('/message',MessageRoute)
+app.use('/command',CommandRoute)
+app.use('/story',StoryRoute)

@@ -19,7 +19,7 @@ const MenuCard = () => {
         '& > :not(style)': {
           m: 1,
           width: 240,
-          height: 180,
+          height: 160,
         },
       }}
     >

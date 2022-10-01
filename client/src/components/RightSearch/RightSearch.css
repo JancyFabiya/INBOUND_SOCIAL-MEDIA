@@ -1,6 +1,6 @@
 .Search{
     display: flex;
-    background-color: var(--inputColor);
+    /* background-color: var(--inputColor); */
     border-radius: 10px;
     padding: 5px;
     width: 15rem;
@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: center;
     margin-left: 17rem;
-    margin-top: -2.5rem;
+    margin-top: -1rem;
     background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
     border-radius: 8px;
     padding: 8px;

@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const FriendProfileCover = ({friend}) => {
   const {user} = useSelector((state)=>state.authReducer.authData)
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-console.log('cover',friend);
+// console.log('cover',friend);
   return (
     <div className="Profilecover">
       <div className="ProfileImage">
@@ -22,7 +22,7 @@ console.log('cover',friend);
       </div>
       <div className="Profilename">
         <span>{friend.firstname} {friend.lastname}</span>
-        <span>{user.following.length} Friends</span>
+        <span>{friend.following ?friend.following.length : '0'} Friends</span>
       </div>
     </div>
   );

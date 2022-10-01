@@ -49,7 +49,7 @@ const loginUser = async(req,res)=>{
 
     try {
         const user = await UserModel.findOne({username: username,isAdmin:'false'})
-        console.log(user);
+        // console.log(user);
 
         if(user){
             const validity = await bcrypt.compare(password,user.password)
@@ -79,7 +79,7 @@ const loginAdmin = async(req,res)=>{
 
     try {
         const admin = await UserModel.findOne({username: username})
-        console.log(admin);
+        // console.log(admin);
 
         if(admin.isAdmin==true){
             const validity = await bcrypt.compare(password,admin.password)
@@ -104,29 +104,29 @@ const loginAdmin = async(req,res)=>{
 
 //google login
  const googleLogin =async(req,res)=>{
-    console.log("hello world")
+    // console.log("hello world")
   
    
     try{
       const{idToken}=req.body;
     
       const verify = await client.verifyIdToken({idToken, audience: "942641737589-8p9d1771hcq0g4e2ukmej1kp5o9r2hoe.apps.googleusercontent.com" })
-      console.log(verify)
+    //   console.log(verify)
       
   
       const {email, name} = verify.payload;
-      console.log(email)
+    //   console.log(email)
       const password = email + process.env.JWT_SECRET
-      console.log(password)
+    //   console.log(password)
     
   
       const passwordHash = await bcrypt.hash(password, 12)
   
      
       const user = await UserModel.findOne({email})
-      console.log(user,"=================")
+    //   console.log(user,"=================")
       if(user){
-        console.log(user)
+        // console.log(user)
          const isMatch = await bcrypt.compare(password, user.password)
          const token = jwt.sign({
             username: user.username,
@@ -152,7 +152,7 @@ const loginAdmin = async(req,res)=>{
           name, email, password: passwordHash
       })
     const hello=  await newUser.save()
-    console.log(hello)
+    // console.log(hello)
     const token = jwt.sign({
         username: user.username,
         id: user._id
@@ -170,7 +170,7 @@ const loginAdmin = async(req,res)=>{
       
   
     }catch(err){
-        console.log({msg:err.message})
+        // console.log({msg:err.message})
       return res.status(500).json({msg:err.message})
   
     }

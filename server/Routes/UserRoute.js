@@ -9,5 +9,5 @@ router.put('/:id', updateUser)
 router.delete('/:id', deleteUser)
 router.put('/:id/follow',followUser)
 router.put('/:id/unfollow',unFollowUser)
-router.get('/:id',friendPerson)
+router.get('/:id/frnd',friendPerson)
 module.exports = router;

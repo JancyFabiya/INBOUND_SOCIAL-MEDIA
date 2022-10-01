@@ -14,22 +14,22 @@ const InfoCard = () => {
     const params = useParams()
 
     const profileUserId = params.id
-    console.log(profileUserId);
+    // console.log(profileUserId);
     const [profileUser, setProfileUser] = useState({})
     const {user}  = useSelector((state) => state.authReducer.authData);
 
 
-    console.log('info',user)
+    // console.log('info',user)
     useEffect(()=>{
         const fetchProfileUser = async()=>{
             if(profileUserId === user._id){
                 setProfileUser(user)
-                console.log(user);
+                // console.log(user);
 
             }else{
                 const profileUser = await UserApi.getUser(profileUserId)
                 setProfileUser(profileUser)
-                console.log(profileUser);
+                // console.log(profileUser);
             }
         }
         fetchProfileUser();

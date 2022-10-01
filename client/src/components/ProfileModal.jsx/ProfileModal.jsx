@@ -64,7 +64,7 @@ const [coverImage,setCoverImage] = useState(null)
 const dispatch = useDispatch()
 const param = useParams()
 const {user} = useSelector((state)=>state.authReducer.authData)
-console.log('modal',data)
+// console.log('modal',data)
 
 const handleChange = (e)=>{
   setFormData({...formData,[e.target.name]:e.target.value})
@@ -106,8 +106,8 @@ const handleSubmit = (e)=>{
       console.log(err);
     }
   }
-  console.log('paramid',param.id);
-  console.log('userdata',UserData);
+  // console.log('paramid',param.id);
+  // console.log('userdata',UserData);
   dispatch(updateUser(param.id, UserData));
   setOpen(false);
 }

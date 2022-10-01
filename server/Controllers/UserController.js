@@ -13,12 +13,12 @@ const jwt = require('jsonwebtoken')
                 return e
             }
          })
-         console.log(newUser,'//////////');
+        //  console.log(newUser,'//////////');
          newUser = newUser.map((user)=>{
             const {password,...otherDetails} = user._doc
             return otherDetails
         })
-        console.log('@@@@',users);
+        // console.log('@@@@',users);
 
         res.status(200).json(newUser)
     } catch (error) {
@@ -47,9 +47,9 @@ const getUser = async(req, res)=>{
 const updateUser = async(req,res)=>{
     const id = req.params.id
     const {_id,password} = req.body.data;
-console.log('id',id);
-console.log('_id',_id);
-console.log('reqbody',req.body);
+// console.log('id',id);
+// console.log('_id',_id);
+// console.log('reqbody',req.body);
     if(id === _id ) {
         try {
 
@@ -58,7 +58,7 @@ console.log('reqbody',req.body);
             //     req.body.password = await bcrypt.hash(password,salt)
             // }
             const user = await UserModel.findByIdAndUpdate(id,req.body,{new: true})
-            console.log('user:',user);
+            // console.log('user:',user);
             const token = jwt.sign(
                 {username:user.username, id: user._id},
                 process.env.JWT_KEY,

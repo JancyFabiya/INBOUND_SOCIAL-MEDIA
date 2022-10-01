@@ -21,6 +21,9 @@
     margin-top:-13rem ;
     margin-left: 1rem;
     width: 86rem;
+    overflow: auto;
+    height: 28rem;
+    
 }
 .menus{
     display: flex;

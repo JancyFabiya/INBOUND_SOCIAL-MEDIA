@@ -22,3 +22,4 @@ export const uploadPost=(data)=>async(dispatch)=>{
        dispatch({type:"UPLOAD_FAILED"})
     }
 }
+

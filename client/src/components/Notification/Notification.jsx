@@ -13,7 +13,7 @@ const Notification = () => {
     useEffect(()=>{
         const fetchPersons = async()=>{
             const {data} = await getAllUsers(user._id);
-            console.log('111',data);
+            // console.log('111',data);
             setPersons(data)
         }
         fetchPersons()

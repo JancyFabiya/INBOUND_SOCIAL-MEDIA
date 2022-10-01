@@ -52,7 +52,7 @@ const AdminHome = () => {
     
     // console.log('post',user);
     const posts = useSelector((state) => state.postReducer.posts);
-console.log(posts);
+// console.log(posts);
 
     useEffect(()=>{
         const fetchPersons = async()=>{

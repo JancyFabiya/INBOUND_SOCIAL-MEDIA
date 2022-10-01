@@ -20,8 +20,38 @@
     padding: 4px;
     color: white;
     width: 100%;
-    height: 150px;
+    height: 220px;
 }
 .plus:hover{
     cursor: pointer;
 }
+.crd:hover{
+    cursor: pointer;
+}
+
+/* .main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* slider */
+
+/* .portfolio .swiper{
+    overflow: visible !important;
+}
+.portfolio-slider{
+    margin-top:3rem;
+    width: 100%;
+}
+.portfolio-slider .swiper-slide{
+    width: 20rem;
+}
+.portfolio img{
+    width: 19rem;
+    height: 12rem;
+    filter: drop-shadow(-12px 15px 13px rgba(0,0,0.25));
+    border-radius:19px;
+} */
