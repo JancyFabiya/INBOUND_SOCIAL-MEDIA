@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Button, Card, Container, Form, Row } from "react-bootstrap";
 import "./Signup.css";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../../api/AuthRequest";
+// import { signUp } from "../../api/AuthRequest";
 import { Link } from "react-router-dom";
 import Logo from "../../img/log.jpg";
+import { signUp } from "../../actions/AuthAction";
+
 
 const Signup = () => {
   const dispatch = useDispatch();

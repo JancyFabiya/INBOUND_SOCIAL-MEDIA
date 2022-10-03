@@ -10,6 +10,7 @@ import Signup from './pages/Signup/Signup';
 import AdminLogin from './pages/AdminLogin/AdminLogin';
 import AdminHome from './pages/AdminHome/AdminHome'
 import FriendProfile from './pages/FriendProfile/FriendProfile';
+import EmailVerify from './components/EmailVerify/EmailVerify';
 
 function App() {
   const user = useSelector((state) => state.authReducer.authData)
@@ -23,12 +24,14 @@ function App() {
         
         <Route path='/' element={user ? <Navigate to="home" /> : <Navigate to="auth" />} />
         <Route path='/home' element={user ? <Home/> : <Navigate to = '../auth'/>}/>
-        <Route path='/auth' element={user ? <Navigate to = '../home'/> : <Signup/>}/>
+        {/* <Route path='/auth' element={user ? <Navigate to = '../home'/> : <Signup/>}/> */}
+        <Route path='/auth' element={user ? <Navigate to = '../verify'/> : <Signup/>}/>
+        <Route path='/verify' element={<EmailVerify/>}/>
+
         <Route path='/login'element={user?<Navigate to ='../home'/>:<Login/>}/>
         <Route path ='/adminhome' element={admin ? <AdminHome/>: <Navigate to="/admin"/>}/>
         <Route path='/admin' element={admin ?<Navigate to="/adminhome"/>:<AdminLogin/>}/>
         {/* <Route path='/admin' element={<AdminLogin/> } /> */}
-
         {/* <Route path='/profile' element={<Profile/> } /> */}
         <Route path='/profile/:id' element = {user? <Profile/> : <Navigate to="../auth"/>}/>
         <Route path='/chat' element={user ? <Chat/> : <Navigate to ="../auth" />} />

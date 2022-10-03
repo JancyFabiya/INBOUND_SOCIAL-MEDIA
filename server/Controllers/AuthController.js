@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 const { OAuth2Client } =require("google-auth-library");
 const ChatModel = require('../Models/ChatModel');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
-
-
+const VerificationToken = require("../Models/token")
+const { generateOTP, mailTransport } = require('../util/mail')
+const token = require('../Models/token')
+const { isValidObjectId } = require('mongoose')
 
 
 
@@ -28,6 +29,22 @@ const registerUser = async(req,res)=>{
             return res.status(400).json({message:"Username is already registered!"})
         }
        const user = await newUser.save()
+
+       const OTP = generateOTP()
+        const verificationToken = new VerificationToken({
+            owner: user._id,
+            emailtoken: OTP
+        })
+        const emailToken = await verificationToken.save();
+        console.log(emailToken);
+
+        mailTransport().sendMail({
+            from: "jancyfebin555@gmail.com",
+            to: user.username,
+            subject: 'verify your email account',
+            html: `<h1>${OTP}</h1>`
+        })
+
 
         const token = jwt.sign({
             username: user.username,
@@ -71,6 +88,42 @@ const loginUser = async(req,res)=>{
 
     }
 }
+
+//verify Email
+const verifyEmail = async (req, res) => {
+    const { otp, userId } = req.body
+    console.log(userId);
+    console.log(otp);
+    // if(!userId||otp.trim()) return sendError(res,'invalid request,missing parameters!')
+    // if (!isValidObjectId()) return sendError(res, 'invalid user id!')
+    const user = await UserModel.findById(userId)
+    console.log(user);
+    if (!user) return sendError(res, 'Sorry,user not found')
+
+    if (user.verified) return sendError(res, 'this account is already verified');
+
+    const emailtoken = await VerificationToken.findOne({ owner: user._id })
+    if (!emailtoken) return sendError(res, 'sorry, user not found!');
+
+    const isMatched = await emailtoken.compareToken(otp)
+    if (!isMatched) return sendError(res, 'please provide a valid token')
+
+    user.verified = true;
+
+    await VerificationToken.findByIdAndDelete(emailtoken._id)
+    await user.save()
+
+    mailTransport().sendMail({
+        from: "jancyfebin555@gmail.com",
+        to: user.username,
+        subject: 'verify your email account',
+        html: `<h1>${'email verified successfully'}</h1>`
+    })
+    res.json({ success: true, message: "your email is verified" })
+
+}
+
+
 
 //login admin
 const loginAdmin = async(req,res)=>{
@@ -183,4 +236,4 @@ const loginAdmin = async(req,res)=>{
 
 
 
-module.exports = {registerUser,loginUser,googleLogin,loginAdmin}
+module.exports = {registerUser,loginUser,googleLogin,loginAdmin,verifyEmail}

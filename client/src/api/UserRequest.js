@@ -1,14 +1,7 @@
-import axios from "axios"
+import API from "./axios"
 
-const API =axios.create({baseURL: "http://localhost:5000"})
 
-// API.interceptors.request.use((req)=>{
-//     if(localStorage.getItem('profile'))
-//     {
-//         req.headers.Authorization = `Bearer ${JSON.stringify(localStorage.getItem('profile').token)}`
-//     }
-//     return req
-// })
+
 
 export const getUser = (userId)=> API.get(`/user/${userId}`)
 

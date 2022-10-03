@@ -1,0 +1,28 @@
+.login {
+    min-height: 100vh;
+    background-image: url('../../Images/bgimg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.loginLogo {
+    font-size: 50px;
+    font-weight: 800;
+    font-family: 'DynaPuff', cursive;
+    color: #481f3f;
+    margin-bottom: 10px;
+}
+
+.cardcolor {
+    background-color: #481f3f;
+    color: white;
+}
+
+.btncolor {
+    align-items: center;
+
+}
+
+.link {
+    text-decoration: none;
+}

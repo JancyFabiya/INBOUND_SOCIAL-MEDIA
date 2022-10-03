@@ -1,4 +1,6 @@
 const nodemailer=require('nodemailer')
+
+
 const generateOTP = () => {
     let otp = ''
     for (let i = 0; i <= 3; i++) {
@@ -11,7 +13,7 @@ const generateOTP = () => {
 const mailTransport=()=>nodemailer.createTransport({
         host: "smtp.gmail.com",
         service: 'gmail',
-        port: 2525,
+        port: 465,
         auth: {
             user:process.env.MAILTRAP_USERNAME,
             pass:process.env.MAILTRAP_PASSWORD

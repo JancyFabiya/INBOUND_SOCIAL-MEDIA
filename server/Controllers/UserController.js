@@ -154,5 +154,9 @@ const friendPerson = async(req,res)=>{
     }
 }
 
+// // stories
+// const story = async(req,res)=>{
+//     const id = req.
+// }
 
 module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson}
