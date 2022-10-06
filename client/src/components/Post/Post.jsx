@@ -9,6 +9,7 @@ import { likePost } from '../../api/PostRequest'
 import CommandModal from '../CommandModal/CommandModal'
 import { useEffect } from 'react'
 import { getCmnd } from '../../api/CommandRequest'
+import DeletePost from '../DeletePost/DeletePost'
 
 const Post = ({data}) => {
     const {user} = useSelector((state)=>state.authReducer.authData)
@@ -37,6 +38,9 @@ const Post = ({data}) => {
 
   return (
 <div className="Post">
+    <div>
+        <DeletePost data={data}/>
+    </div>
     <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : " "} alt="" />
     <div className="postReact">
         <img src={liked?Heart: NotLike} alt="" style={{cursor:"pointer"}} onClick={handleLike}/>

@@ -14,3 +14,6 @@ export const followUser = (id,data) => API.put(`/user/${id}/follow`,data)
 export const unFollowUser = (id,data) => API.put(`/user/${id}/unfollow`,data)
 
 export const friendPerson = (id) => API.get(`/user/${id}/frnd`)
+
+export const searchUser = (data) => API.post('/user/search',data)
+// console.log('searccch',formData);

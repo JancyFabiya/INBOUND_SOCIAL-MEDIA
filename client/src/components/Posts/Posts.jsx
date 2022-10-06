@@ -33,8 +33,12 @@ const Posts = () => {
                 '& > :not(style)': {
                   // marginBottom:-42,
                   // gap: 1,
-                  width: 860,
-                  height: 460,
+                  width : 860,
+                  height : 460,
+                  // minwidth: 860,
+                  // minheight: 460,
+                  // maxWidth : 860,
+                  // maxHeight :660
                 },
               }}
             >

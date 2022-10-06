@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './RightSearch.css'
 import {UilSearch} from '@iconscout/react-unicons'
 import {AiOutlineLogout} from 'react-icons/ai'
@@ -8,6 +8,7 @@ import { logOut } from '../../actions/AuthAction'
 import { useDispatch } from 'react-redux'
 
 const RightSearch = () => {
+  const search = useRef();
   const navigate=useNavigate()
   const dispatch = useDispatch()
 
@@ -17,14 +18,18 @@ const RightSearch = () => {
     dispatch(logOut())
 }
 
+const handleSearch = (e) => {
+  e.preventDefault();
+  
+}
   return (
 <div className="right">
 <div className="Search">
-  {/* <TextField id="filled-hidden-label-small" color='warning' label="Search"/> */}
-    {/* <input type="text" placeholder='Search'/>
+  {/* <TextField id="filled-hidden-label-small" color='warning' label="Search"/>  */}
+    <input  ref={search} type="text" placeholder='Search'/>
     <div className="s-icon-r">
-        <UilSearch/>
-    </div> */}
+        <UilSearch onClick={handleSearch}/>
+    </div> 
     
 </div>
 <div className="Logout-r">

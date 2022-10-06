@@ -42,6 +42,19 @@ const getUser = async(req, res)=>{
         res.status(500).json(error)
     }
 }
+//Search user
+const searchUser = async(req,res)=>{
+    const na = req.body['firstname']
+    console.log('search',req.body);
+    try {
+        const user = await UserModel.find()
+        const srUser = user.filter((e)=>e.firstname.includes(na))
+        console.log(srUser,'searchuser');
+        res.status(200).json(srUser)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
 
 //update a user
 const updateUser = async(req,res)=>{
@@ -159,4 +172,4 @@ const friendPerson = async(req,res)=>{
 //     const id = req.
 // }
 
-module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson}
+module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson,searchUser}

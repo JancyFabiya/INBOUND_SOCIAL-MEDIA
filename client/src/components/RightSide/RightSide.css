@@ -7,7 +7,7 @@
     gap: 1rem;
 
 }
-/* .Search{
+.Search{
     display: flex;
     background-color: var(--inputColor);
     border-radius: 10px;
@@ -28,13 +28,13 @@
     background: linear-gradient(106.23deg,#f99827,#f95f35 100%);
     border-radius: 5px;
     padding: 4px;
-    margin-left: 2.8rem;
+    margin-left: 1rem;
     color: white;
 }
 .s-icon:hover{
   cursor: pointer;
 }
-.Logout{
+.Logout-r{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +48,6 @@
     height: 22px;
 
 }
-.Logout:hover{
+.Logout-r:hover{
     cursor: pointer;
-  } */
+  }

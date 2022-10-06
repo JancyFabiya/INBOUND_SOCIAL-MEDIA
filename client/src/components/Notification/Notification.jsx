@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Notification.css'
 import { Followers} from '../../Data/NotificationData'
 import User from '../User/User'
-import { getAllUsers } from '../../api/UserRequest'
+import { getAllUsers, searchUser } from '../../api/UserRequest'
 import {useSelector} from 'react-redux';
-const Notification = () => {
+import SearchUser from '../SearchUser/SearchUser'
+const Notification = ({svalue}) => {
+  // console.log('111',srch.length);
+  console.log('222',svalue.data);
     const [persons,setPersons] = useState([]);
     const {user}  = useSelector((state) => state.authReducer.authData);
 // console.log('ffff',user);
@@ -20,12 +23,25 @@ const Notification = () => {
     
         
     },[])
+
+    // useEffect(()=>{
+    //   const serchPerson = async()=>{
+    //     const sr = await searchUser(srch)
+    //     console.log('serarch',sr);
+    //   }
+    //   serchPerson()
+    // },[])
     // console.log(foll,"============")
   
   return (
 <div className="Notification">
 <h3>People you may know</h3>
-{persons.map((person,id)=>{
+{
+(svalue.length != 0) ? 
+<SearchUser Suser={svalue.data}/>
+// svalue != '' ? 'null'
+:
+persons.map((person,id)=>{
     if(person._id !== user._id)
   {
     
