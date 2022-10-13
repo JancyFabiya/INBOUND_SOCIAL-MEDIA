@@ -1,0 +1,23 @@
+.frndlist{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 5rem;
+}
+/* .paper{
+    display: flex;
+    gap: 1rem;
+} */
+.fname{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.fbutn{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}

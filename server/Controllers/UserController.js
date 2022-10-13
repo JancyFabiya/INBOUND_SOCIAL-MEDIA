@@ -42,6 +42,20 @@ const getUser = async(req, res)=>{
         res.status(500).json(error)
     }
 }
+
+//friend list of user's
+const frndList = async(req,res)=>{
+    console.log("friend list");
+    const id = req.params.id;
+    console.log(req.params.id);
+    try {
+        const user = await UserModel.findById(id).populate({path:'following',model:'Users'})       
+            res.status(200).json(user) 
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 //Search user
 const searchUser = async(req,res)=>{
     const na = req.body['firstname']
@@ -172,4 +186,4 @@ const friendPerson = async(req,res)=>{
 //     const id = req.
 // }
 
-module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson,searchUser}
+module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson,searchUser,frndList}

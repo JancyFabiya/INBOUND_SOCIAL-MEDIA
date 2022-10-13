@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import FriendList from "../../components/FriendList/FriendList";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import Posts from "../../components/Posts/Posts";
 import ProfileCover from "../../components/ProfileCover/ProfileCover";
@@ -10,11 +11,14 @@ const Profile = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts);
+  const [frnd,setFrnd] =useState(false)
   return (
     <div className="Profile">
       <ProfileNav />
       <div className="cover">
-        <ProfileCover location = 'profilePage'/>
+        <ProfileCover/>
+        {/* <ProfileCover location = 'profilePage'/> */}
+
       </div>
       <div className="left">
         <InfoCard />
@@ -24,7 +28,8 @@ const Profile = () => {
           <span>{posts.filter((post) => post.userId === user._id).length}</span>
           <span>Post</span>
         </div>
-        <span>Friends</span>
+        <span
+        onClick={()=>setFrnd(!frnd)}>Friends</span>
         <span
           className="big-home"
           onClick={() => {
@@ -37,7 +42,11 @@ const Profile = () => {
       
       </div>
       <div className="post">
+      {frnd === true ? <FriendList/> :
+
         <Posts />
+}
+
       </div>
     </div>
   );

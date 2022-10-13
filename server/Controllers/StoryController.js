@@ -101,6 +101,7 @@ const getTimelineStory = async(req,res)=>{
 
     try{
         const currentUserStory = await StoryModel.find({userId : userId}).populate('userId')
+        // const user = await UserModel.findById(userId).populate({path:'following',model:'Users'})       
 
         
         const followingStorys = await UserModel.aggregate([
@@ -192,6 +193,7 @@ const getTimelineStory = async(req,res)=>{
         // console.log('@@@@@@@@@');
         // console.log(followUser[0].followingdetail,'followuser');
         // console.log('cuuurrr',currentUserStory.concat(...followingStorys[0].followingStorys));
+        // res.status(200).json(user.concat(...followingStorys[0].followingStorys))
         res.status(200).json(currentUserStory.concat(...followingStorys[0].followingStorys))
     }catch (error) {
         res.status(500).json(error)

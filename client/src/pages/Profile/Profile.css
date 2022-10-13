@@ -12,12 +12,14 @@
 }
 .left{
     display: flex;
+    position: relative;
     margin-top: 0rem ;
     margin-left: 1rem;
     width: 85%;
 }
 .post{
     display: flex;
+    position: relative;
     margin-top:-13rem ;
     margin-left: 1rem;
     width: 86rem;
@@ -29,7 +31,7 @@
     display: flex;
     margin-top: -20rem;
     height: 2rem;
-    margin-left: 52rem;
+    margin-left: 56rem;
     gap: 2rem;
 }
 .menus>div:hover{
@@ -41,6 +43,12 @@
     cursor: pointer;
     color: orange; 
     font-weight: bold;
+    /* margin-left: 1rem; */
+
+}
+.menus>div>span:nth-of-type(2){
+    /* gap: 2rem; */
+    margin-left: 0.5rem;
 }
 .menus>span:nth-of-type(1):hover{
     cursor: pointer;

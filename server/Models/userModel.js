@@ -30,8 +30,24 @@ const userSchema = mongoose.Schema(
         worksAt: String,
         relationship: String,
         education:String,
-        followers: [],
-        following: [],
+        followers: {
+            type:[
+                {
+					type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Users',
+
+                },
+            ],
+        },
+        following: {
+            type:[
+                {
+					type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Users',
+
+                },
+            ],
+        },
         verified:{
             type: Boolean,
             required: true,

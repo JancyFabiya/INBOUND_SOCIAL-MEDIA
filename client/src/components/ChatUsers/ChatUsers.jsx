@@ -88,7 +88,7 @@ const ChatUsers = ({ data, currentUserId,online }) => {
           {/* <button className="button-dec">Decline</button> */}
         </div>
       </div>
-      <hr style={{ border: "0.1px solid " }} />
+      {/* <hr style={{ border: "0.1px solid " }} /> */}
     </>
   );
 };

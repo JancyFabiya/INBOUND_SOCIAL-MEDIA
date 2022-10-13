@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 import * as UserApi from '../../api/UserRequest.js'
 import { logOut } from '../../actions/AuthAction'
 // import { BsPencilSquare } from 'react-icons/bs'
-const InfoCard = () => {
+const InfoCard = ({friend}) => {
     const [modalOpened , setModalOpened] = useState(false)
     const dispatch = useDispatch()
     const params = useParams()
@@ -60,21 +60,21 @@ const InfoCard = () => {
    
     <div className="info">
         <span>
-            <b>Status </b>
+            <b>Status :</b>
         </span>
-        <span>{profileUser.relationship}</span>
+        <span>{friend ? (friend.relationship) : (profileUser.relationship)}</span>
     </div>
     <div className="info">
         <span>
-            <b>Lives in </b>
+            <b>Lives in :</b>
         </span>
-        <span>{profileUser.livesin}</span>
+        <span>{friend ? (friend.livesin) : (profileUser.livesin)}</span>
     </div>
     <div className="info">
         <span>
-            <b>Works at </b>
+            <b>Works at :</b>
         </span>
-        <span> {profileUser.worksAt}</span>
+        <span> {friend ? (friend.worksAt) : (profileUser.worksAt)}</span>
     </div>
     {/* <button className='button logout-button'onClick={handleLogOut}>Home</button> */}
 </div> 

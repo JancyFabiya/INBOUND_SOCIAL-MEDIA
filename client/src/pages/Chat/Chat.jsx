@@ -84,6 +84,7 @@ const Chat = () => {
           {chats.map((chat) => {
             // <div>
             return (
+              <>
               <div
                 className="conversation"
                 onClick={() => setCurrentChat(chat)}
@@ -93,7 +94,10 @@ const Chat = () => {
                   currentUserId={user._id}
                   online={checkOnlineStatus(chat)}
                 />
+                
               </div>
+      <hr style={{ border: "0.1px solid " }} />
+      </>
               // if (person._id !== user._id) {
               //   return <ChatUsers person={person} key={id} />;
               // }

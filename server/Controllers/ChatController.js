@@ -1,8 +1,21 @@
 const ChatModel = require('../Models/ChatModel')
 
+// const createChat = async(req,res)=>{
+//     const newChat = new ChatModel({
+//         members: [req.body.senderId, req.body.receiverId]
+//     });
+//     try {
+//         const result = await newChat.save();
+//         res.status(200).json(result);
+//     } catch (error) {
+//         res.status(500).json(error)
+        
+//     }
+// }
 const createChat = async(req,res)=>{
+    const {senderId,receiverId} = req.body
     const newChat = new ChatModel({
-        members: [req.body.senderId, req.body.receiverId]
+        members: [senderId,receiverId]
     });
     try {
         const result = await newChat.save();
@@ -12,7 +25,6 @@ const createChat = async(req,res)=>{
         
     }
 }
-
 const userChats = async(req,res)=>{
     try {
         const chat =await ChatModel.find({
