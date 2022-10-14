@@ -63,8 +63,8 @@ const AdminLogin = () => {
         Submit
       </Button>
       </div>
-    <h6 style={{textAlign:'center'}}>OR</h6>
-    <h6 style={{textAlign:'center'}}>Forget Password</h6>
+    {/* <h6 style={{textAlign:'center'}}>OR</h6>
+    <h6 style={{textAlign:'center'}}>Forget Password</h6> */}
     <span
      style={{cursor:"pointer",color:"black"}}
     

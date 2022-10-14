@@ -7,11 +7,11 @@ import HorizontalScroll from 'react-scroll-horizontal'
 const PostSide = () => {
   return (
     <div className="PostSide">
-       <HorizontalScroll>
+       {/* <HorizontalScroll> */}
           <div className='main bg' >
         <Story/>
         </div>
-    </HorizontalScroll>
+    {/* </HorizontalScroll> */}
     <div className="posts">
       <Posts/>
     </div>

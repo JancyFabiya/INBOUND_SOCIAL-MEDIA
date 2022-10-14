@@ -12,6 +12,7 @@ const Profile = () => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts);
   const [frnd,setFrnd] =useState(false)
+  const [post,setPost] = useState(true)
   return (
     <div className="Profile">
       <ProfileNav />
@@ -26,10 +27,19 @@ const Profile = () => {
       <div className="menus">
         <div>
           <span>{posts.filter((post) => post.userId === user._id).length}</span>
-          <span>Post</span>
+          <span
+          onClick={()=>{
+            setPost(true)
+          setFrnd(false)
+
+            }}>Post</span>
         </div>
         <span
-        onClick={()=>setFrnd(!frnd)}>Friends</span>
+        onClick={()=>{
+          setFrnd(true)
+          setPost(false)
+
+          }}>Friends</span>
         <span
           className="big-home"
           onClick={() => {
@@ -42,10 +52,10 @@ const Profile = () => {
       
       </div>
       <div className="post">
-      {frnd === true ? <FriendList/> :
+      {frnd === true ? (
+      <div className="notiF"><FriendList/></div>) : " "}
 
-        <Posts />
-}
+       {post === true ? <Posts /> : " "}
 
       </div>
     </div>

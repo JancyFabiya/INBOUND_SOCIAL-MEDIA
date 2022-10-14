@@ -13,4 +13,9 @@ export const getTimelinePosts = (id)=> API.get(`/post/${id}/timeline`)
 
 export const likePost = (id, userId) => API.put(`post/${id}/like`,{userId: userId})
 
-export const deletePost = (id,data) => API.post(`post/${id}/delete`,data)
+export const deletePost = (id,data) => API.post(`post/${id}/delete`,data).then((result) => {
+  console.log(result)
+  return result.deleted
+}).catch((err) => {
+  return err
+});

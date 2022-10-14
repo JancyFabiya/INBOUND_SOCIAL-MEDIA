@@ -18,3 +18,5 @@ export const friendPerson = (id) => API.get(`/user/${id}/frnd`)
 export const searchUser = (data) => API.post('/user/search',data)
 
 export const frndList = (id)=> API.get(`/user/frndlist/${id}`)
+
+export const allUser = () =>API.get('/user') 

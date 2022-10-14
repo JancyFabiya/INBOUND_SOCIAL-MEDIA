@@ -1,4 +1,4 @@
-.login {
+/* .login {
     min-height: 100vh;
     background-image: url('../../Images/bgimg.jpg');
     background-position: center;
@@ -25,4 +25,25 @@
 
 .link {
     text-decoration: none;
+} */
+
+
+.row{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-right: 20rem;
+}
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    /* position: relative; */
+    background-image: url('../../img/b6.webp');
+    background-position: center;
+    background-size:cover;
+
+
 }

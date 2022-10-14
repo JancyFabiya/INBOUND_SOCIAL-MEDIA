@@ -22,7 +22,7 @@ const Notification = ({svalue}) => {
         fetchPersons()
     
         
-    },[])
+    },[persons])
 
     // useEffect(()=>{
     //   const serchPerson = async()=>{

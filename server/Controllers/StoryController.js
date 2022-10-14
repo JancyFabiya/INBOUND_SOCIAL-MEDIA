@@ -97,11 +97,17 @@ const getStory = async(req,res)=>{
 // }
 const getTimelineStory = async(req,res)=>{
     const userId = req.params.id
-    console.log(new mongoose.Types.ObjectId(userId),'id');
+    // console.log(new mongoose.Types.ObjectId(userId),'id');
 
     try{
+        // const user = await UserModel.findById(userId).populate({path:'following',model:'Users'})  
+        // const story = await StoryModel.find()   
+        
+        // // const result = user.filter((e)=>e._id.includes(story[0].userId)) 
+        // res.status(200).json(result)
+
+
         const currentUserStory = await StoryModel.find({userId : userId}).populate('userId')
-        // const user = await UserModel.findById(userId).populate({path:'following',model:'Users'})       
 
         
         const followingStorys = await UserModel.aggregate([
@@ -118,14 +124,7 @@ const getTimelineStory = async(req,res)=>{
                     as: "followingStorys"
                 }
             },
-            // {
-            //     $lookup:{
-            //         from :'Users',
-            //         localField: 'following',
-            //         foreignField:'_id',
-            //         as: 'followingdetail'
-            //     }
-            // },
+            
             {
                 $project: {
                     followingStorys: 1,
@@ -135,65 +134,6 @@ const getTimelineStory = async(req,res)=>{
         ])
 
 
-        // const followUser =  await UserModel.aggregate([
-           
-            
-        //     {
-        //         $match: {
-        //             _id: new mongoose.Types.ObjectId(userId)
-        //         }
-        //     },
-        //     {
-        //         $unwind : "$following"
-        //     },
-        //     // {
-        //     //     $match:{
-        //     //         _id: new mongoose.Types.ObjectId(following)
-        //     //     }
-        //     // },
-        //     // {
-        //     //     $project:{
-        //     //         following:{$toObjectId:"$following"}
-        //     //     }
-        //     // },
-        //     {
-        //         $lookup:{
-        //             from :'Users',
-        //             localField:`{$toObjectId:$following}`,
-        //             foreignField:'_id',
-        //             as: 'followingdetail'
-        //         }
-        //     },
-        //     // {
-        //     //     $unwind : "$followingdetail"
-        //     // },
-        //     // {
-        //     //     $lookup:{
-        //     //         from: "storys",
-        //     //         localField:"following",
-        //     //         foreignField: "userId",
-        //     //         as: "followingStorys"
-        //     //     }
-        //     // },
-        //     // {
-        //     //     $unwind: "$followingStorys"
-        //     // },
-        //     {
-        //         $project: {
-        //             // following :1,
-        //             // followingStorys:"$followingStorys",
-        //             // followingdetail:1,
-        //             _id: 0,
-        //             // profilePicture:1,
-        //             // firstname:1
-        //         }
-        //     }
-        // ])
-
-        // console.log('@@@@@@@@@');
-        // console.log(followUser[0].followingdetail,'followuser');
-        // console.log('cuuurrr',currentUserStory.concat(...followingStorys[0].followingStorys));
-        // res.status(200).json(user.concat(...followingStorys[0].followingStorys))
         res.status(200).json(currentUserStory.concat(...followingStorys[0].followingStorys))
     }catch (error) {
         res.status(500).json(error)

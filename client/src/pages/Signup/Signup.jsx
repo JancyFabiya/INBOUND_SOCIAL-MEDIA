@@ -168,7 +168,7 @@ const Signup = () => {
                     </Form.Group>
 
                     <div className="ms-auto">
-                      <Button variant="danger" type="submit" disabled={loading}>
+                      <Button variant="warning" type="submit" disabled={loading}>
                         {loading ? "Loading..." : "Signup"}
                       </Button>
                     </div>

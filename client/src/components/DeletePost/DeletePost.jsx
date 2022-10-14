@@ -6,6 +6,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost } from '../../api/PostRequest';
 import { unFollowUser } from '../../actions/userAction';
+import { useEffect } from 'react';
+import { getTimelinePosts } from '../../actions/postAction';
 
 
 
@@ -20,11 +22,20 @@ export default function DeletePost({data}) {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  // useEffect(() => {
+    
+  // }, [user]);
    
   const handleDelete=()=>{
      console.log('ppp');
      console.log(user._id);
-    deletePost(data._id,{userId:user._id})
+ const deleted =   deletePost(data._id,{userId:user._id})
+     if(deleted){
+      dispatch(getTimelinePosts(user._id))
+   
+
+    }
+
   }
 
   const handleClose = () => {
@@ -68,12 +79,12 @@ export default function DeletePost({data}) {
        data.userId===user._id?
          <div>
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
-        <MenuItem onClick={handleClose}>Cancel</MenuItem>
+        {/* <MenuItem onClick={handleClose}>Cancel</MenuItem> */}
         </div>
         :
          <div>
-        <MenuItem onClick={handleFollow}>Unfollow</MenuItem>
-        <MenuItem onClick={handleClose}>Cancel</MenuItem>
+        {/* <MenuItem onClick={handleFollow}>Unfollow</MenuItem> */}
+        <MenuItem onClick={handleClose}>User can delete</MenuItem>
         </div>
        }
        

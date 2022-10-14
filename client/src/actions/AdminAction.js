@@ -11,3 +11,7 @@ export const adminlogIn = (formData) => async(dispatch) => {
        dispatch({type: "ADMIN_FAIL"})
     }
 }
+
+export const logouts=()=>async(dispatch)=>{
+    dispatch({type:"LOGOUT"})
+}

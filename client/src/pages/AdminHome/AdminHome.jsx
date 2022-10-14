@@ -11,7 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector } from 'react-redux';
-import { getAllUsers } from '../../api/UserRequest';
+import { allUser } from '../../api/UserRequest';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,7 +56,7 @@ const AdminHome = () => {
 
     useEffect(()=>{
         const fetchPersons = async()=>{
-            const {data} = await getAllUsers();
+            const {data} = await allUser();
             console.log('111',data);
             setPersons(data)
         }
@@ -67,20 +67,20 @@ const AdminHome = () => {
     <div className="adminhome">
       
       <img src={Logo} width="15%" alt=''/>
-      {/* <div className="logout">
+      <div className="logout">
       <AiOutlineLogout />
 
-      </div> */}
+      </div>
             <div className="table">
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableContainer >
+      <Table sx={{ maxWidth: 680,marginLeft: 50 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>USERS</StyledTableCell>
             {/* <StyledTableCell align="right">POSTS</StyledTableCell> */}
-            <StyledTableCell align="right">NO.OF.FOLLOWERS</StyledTableCell>
-            <StyledTableCell align="right">NO.OF.FOLLOWING</StyledTableCell>
-            <StyledTableCell align="right">EMAIL</StyledTableCell>
+            <StyledTableCell align="left">NO.OF.FOLLOWERS</StyledTableCell>
+            <StyledTableCell align="left">NO.OF.FOLLOWING</StyledTableCell>
+            <StyledTableCell align="left">EMAIL</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -91,9 +91,9 @@ const AdminHome = () => {
                 {row.firstname} {row.lastname}
               </StyledTableCell>
               {/* <StyledTableCell align="right">{posts.filter((post)=>post.userId === user._id).length}</StyledTableCell> */}
-              <StyledTableCell align="right">{row.followers.length}</StyledTableCell>
-              <StyledTableCell align="right">{row.following.length}</StyledTableCell>
-              <StyledTableCell align="right">{row.username}</StyledTableCell>
+              <StyledTableCell align="left">{row.followers.length}</StyledTableCell>
+              <StyledTableCell align="left">{row.following.length}</StyledTableCell>
+              <StyledTableCell align="left">{row.username}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

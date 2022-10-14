@@ -4,15 +4,19 @@
     gap: 1rem;
     /* height: 100%; */
     /* margin-top: 3rem; */
-    /* overflow: auto; */
 }
 .posts{
     /* display: flex; */
     /* flex-direction: column; */
-    margin-top: 20rem;
-    overflow: auto;
+    margin-top: 4rem;
+    overflow: scroll;
+    position: relative;
+
 
 }
-.mainbg{
-    margin-top: -2rem;
+.main{
+    /* margin-top: -2rem; */
+    width: 52rem;
+    overflow: scroll;
+
 }

@@ -27,6 +27,20 @@
     height: 28rem;
     
 }
+
+
+/* .fbutn{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    cursor: pointer;
+    background: transparent;
+    margin-top: 2rem;
+    margin-left: 4rem;
+
+} */
 .menus{
     display: flex;
     margin-top: -20rem;
@@ -73,3 +87,98 @@
     font-weight: bold;
 
 }
+
+
+
+/* frienlist button */
+
+.paper{
+    width: 30rem;
+    height: 6rem;
+    margin-left: 6rem;
+    margin-bottom: 2rem;
+    /* gap: 2rem; */
+}
+.notiF{
+    /* display: flex; */
+    /* position: relative; */
+    /* margin-top:2rem ; */
+    /* margin-left: 1rem; */
+    /* width: 86rem; */
+    overflow: auto;
+    /* height: 28rem; */
+    /* gap: 2px; */
+
+}
+
+.fnoti{
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* margin-top: -1.5rem; */
+}
+/* .fnoti>div{
+    display: flex;
+    width: 2rem;
+    /* gap: 50px; */
+    /* margin-left: 4rem; */
+    /* margin-top: 2rem; *
+
+} */
+.fImg{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+}
+.fname{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-weight: bold;
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+}
+
+.fc-button{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.UnfollowButton{
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    cursor: pointer;
+    background: transparent;
+}
+.fbutn{
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: flex-end; */
+    /* justify-content: center; */
+    margin-top: -2.5rem;
+    margin-left: 12rem;
+}
+.button-dec{
+    height: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  color:var(--orange);
+  border: none;
+  border-radius: 0.5rem;
+  background: white;
+  transition: all 100ms ease-out; 
+}
+.button-dec:hover{
+    cursor: pointer;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+  }

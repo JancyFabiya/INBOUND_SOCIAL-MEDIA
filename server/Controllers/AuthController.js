@@ -131,10 +131,10 @@ const loginAdmin = async(req,res)=>{
     // console.log('login',req.body);
 
     try {
-        const admin = await UserModel.findOne({username: username})
+        const admin = await UserModel.findOne({username: username,isAdmin:'true'})
         // console.log(admin);
 
-        if(admin.isAdmin==true){
+        if(admin){
             const validity = await bcrypt.compare(password,admin.password)
             // validity ? res.status(200).json(user) : res.status(400).json("Wrong Password")
             if(!validity){

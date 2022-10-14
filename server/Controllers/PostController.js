@@ -57,7 +57,10 @@ const deletePost = async (req,res)=>{
         const post= await PostModel.findById(id)
         if(post.userId === userId){
             await post.deleteOne()
-            res.status(200).json("Post deleted successfully")
+            const data={
+                deleted:true
+            }
+            res.status(200).json(data)
         }else{
             res.status(403).json("Action forbidden")
         }
@@ -91,7 +94,7 @@ const likePost = async (req,res)=>{
 const getTimelinePosts = async (req,res)=>{
     const userId = req.params.id
     try {
-        const currentUserPosts = await PostModel.find({userId : userId})
+        const currentUserPosts = await PostModel.find({userId : userId}).populate('userId')
         const followingPosts = await UserModel.aggregate([
             {
                 $match: {

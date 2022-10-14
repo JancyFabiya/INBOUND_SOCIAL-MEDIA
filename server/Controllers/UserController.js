@@ -1,8 +1,29 @@
 const UserModel = require('../Models/userModel');
+const StoryModel = require('../Models/StoryModel');
+const PostModel = require('../Models/postModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
-// get all users
+
+//get all user
+const allUser = async (req,res) => {
+    try {
+        console.log('dfg');
+
+        let user = await UserModel.find({isAdmin:false});
+        let story = await StoryModel.find()
+        const post = await PostModel.find()
+        let a =(user.concat(story)).concat(post)
+
+        // console.log(post);
+        res.status(200).json(user)
+
+    } catch (error) {
+        res.status(500).json(error)
+        
+    }
+}
+// get all unfollow users
  const getAllUsers = async (req,res) =>{
     try {
         let users = await UserModel.find({isAdmin:false});
@@ -45,9 +66,9 @@ const getUser = async(req, res)=>{
 
 //friend list of user's
 const frndList = async(req,res)=>{
-    console.log("friend list");
+    // console.log("friend list");
     const id = req.params.id;
-    console.log(req.params.id);
+    // console.log(req.params.id);
     try {
         const user = await UserModel.findById(id).populate({path:'following',model:'Users'})       
             res.status(200).json(user) 
@@ -181,9 +202,6 @@ const friendPerson = async(req,res)=>{
     }
 }
 
-// // stories
-// const story = async(req,res)=>{
-//     const id = req.
-// }
 
-module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson,searchUser,frndList}
+
+module.exports = {getAllUsers,getUser,updateUser,deleteUser,followUser,unFollowUser,friendPerson,searchUser,frndList,allUser}

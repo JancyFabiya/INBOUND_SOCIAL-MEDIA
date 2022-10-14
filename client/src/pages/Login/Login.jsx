@@ -104,17 +104,17 @@ const Login = () => {
         Submit
       </Button>
       </div>
-    <h6 style={{textAlign:'center'}}>OR</h6>
-    <h6 style={{textAlign:'center'}}>Forget Password</h6>
+    {/* <h6 style={{textAlign:'center'}}>OR</h6>
+    <h6 style={{textAlign:'center'}}>Forget Password</h6> */}
     <span
      style={{cursor:"pointer",color:"black"}}
     
      >
       Don't have an Account?<Link style={{textDecoration: "none",color: "orange"}} to='/auth' className='link'> Signup</Link></span>
       <Link to='/auth'>
-      <div id='signInDiv'>
+      {/* <div id='signInDiv'>
 
-</div>
+</div> */}
 </Link>
     </Form>
       </Card.Body>
